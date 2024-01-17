@@ -18,7 +18,7 @@ const login = (_Username, _password )=>{
     try{
         let data = User.find({
             username:  _Username,
-            password: _password,
+            password: _password
         });
         if(data){
             console.log('logged in successfully')
@@ -42,26 +42,25 @@ const getAllUsers = async () => {
     }
   };
   
-//   const deleteUser = async (_Username) => {
-//     try {
-//       await User.findOneAndDelete({ username: _Username });
+  const deleteUser = async (_Username) => {
+    try {
+      await User.findOneAndDelete({ username: _Username });
   
-//       console.log('User deleted successfully');
-//     } catch (err) {
-//       console.log(err);
-//     }
-//   };
+      console.log('User deleted successfully');
+    } catch (err) {
+      console.log(err);
+    }
+  };
   
-//   const editUser = async (_Username, _editValue) => {
-//     try {
-//       const updatedUser = await User.findOneAndUpdate({ username: _Username },{ username: _editValue}, { new: true });
+  const editUser = async (_Username, _editValue) => {
+    try {
+      const updatedUser = await User.findOneAndUpdate({ username: _Username },{ username: _editValue}, { new: true });
   
-//       console.log('User was edited successfully', updatedUser);
-//     }catch(err) {
-//       console.log(err);
-//     }
-//   };
+      console.log('User was edited successfully', updatedUser);
+    }catch(err) {
+      console.log(err);
+    }
+  };
   
 
-module.exports ={Register, login, getAllUsers}
-  // , deleteUser, editUser};
+module.exports ={Register, login, getAllUsers , deleteUser, editUser};

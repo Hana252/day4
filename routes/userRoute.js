@@ -10,10 +10,10 @@ route.get('/', function(req, res){ //done
 })
 route.post('/register', async function(req, res){ //done
     const {username, password} = req.body;
-    bcrypt.hash(password, 10, async function(err, hash){
+    bcrypt.hash(password, 7, async function(err, hash){
         const data = await userController.Register(username, hash);
-        console.log(data);
-        res.send("فل اوي ")
+        // console.log(data);
+        res.send(data)
     })
 })
 
@@ -27,11 +27,11 @@ route.post('/login', async function(req, res){
             if(matchUser){
                 const user = await userController.login(username, password);
                 console.log("نورت بيتك");
-                res.json({
-                    message: "logged in successfully",
-                    username: user.username
-                    // todos: user.todos
-                });
+                // res.json({
+                //     message: "logged in successfully",
+                //     username: user.username
+                //     // todos: user.todos
+                // });
             }else{
                 res.status(401).json({ error: "Invalid credentials" });
             }
